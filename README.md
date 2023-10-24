@@ -41,3 +41,10 @@ The project is done in teams of 2.
 
 - A function that sorts an array of integers in ascending order using the
   Shell sort algorithm, using the Knuth sequence.
+
+### Task 5
+`Algorithm`: [Cocktail Sort](./101-cocktail_sort_list.c)<br> 
+`Big O`: [101-O](./101-O)
+
+- A function that sorts a doubly linked list of integers in ascending order
+  using the Cocktail sort algorithm.
