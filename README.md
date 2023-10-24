@@ -33,3 +33,11 @@ The project is done in teams of 2.
 - A function that sorts an array of integers in ascending order using the
   Quick sort algorithm.
 - The function uses the `Lomuto` partition scheme.
+
+## Advanced
+
+### Task 4
+`Algorithm`: [Shell Sort](./100-shell_sort.c)<br> 
+
+- A function that sorts an array of integers in ascending order using the
+  Shell sort algorithm, using the Knuth sequence.
