@@ -30,23 +30,18 @@ void swap(int *a, int *b)
  */
 int partiton(int *array, size_t size, int start, int end)
 {
-	int i, j, pivot = array[end];
+	int i = start - 1, j, pivot = array[end];
 
-	for (i = j = start; j < end; ++j)
-		if (array[j] < pivot)
+	for (j = start; j <= end; ++j)
+		if (array[j] <= pivot)
 		{
+			++i;
 			if (i != j) /* Don't swap it self */
 			{
 				swap(array + i, array + j);
 				print_array(array, size);
 			}
-			++i;
 		}
-	if (i != end) /* Don't swap itself */
-	{
-		swap(array + i, array + end); /* put pivot on solid position */
-		print_array(array, size);
-	}
 	return (i);
 }
 
