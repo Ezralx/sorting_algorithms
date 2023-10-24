@@ -20,6 +20,37 @@ void swap(int *a, int *b)
 }
 
 /**
+ * partiton - partitons the array according the Lomuto partiton scheme.
+ * @array: pointer to an array of integers
+ * @size: size of the array
+ * @start: start location of the next recursion
+ * @end: end location of the next recursion
+ *
+ * Return: index for the next partiton
+ */
+int partiton(int *array, size_t size, int start, int end)
+{
+	int i, j, pivot = array[end];
+
+	for (i = j = start; j < end; ++j)
+		if (array[j] < pivot)
+		{
+			if (i != j) /* Don't swap it self */
+			{
+				swap(array + i, array + j);
+				print_array(array, size);
+			}
+			++i;
+		}
+	if (i != end) /* Don't swap itself */
+	{
+		swap(array + i, array + end); /* put pivot on solid position */
+		print_array(array, size);
+	}
+	return (i);
+}
+
+/**
  * recursive_quick_sort - implement quick sort recursively by assigning
  *                            the last element as a pivot
  * @array: pointer to an array of integers
@@ -29,29 +60,13 @@ void swap(int *a, int *b)
  *
  * Return: void
  */
-void recursive_quick_sort(int *array, int size, int start, int end)
+void recursive_quick_sort(int *array, size_t size, int start, int end)
 {
-	int i, j, pivot;
+	int pivot;
 
-	if (start > end || start - end == 0)
+	if (start > end)
 		return;
-	pivot = end;
-	for (i = j = start; j < end; ++j)
-		if (array[j] < array[pivot])
-		{
-			if (i != j) /* Don't swap it self */
-			{
-				swap(array + i, array + j);
-				print_array(array, size);
-			}
-			++i;
-		}
-	if (i != pivot) /* Don't swap itself */
-	{
-		swap(array + i, array + pivot); /* put pivot on solid position */
-		print_array(array, size);
-	}
-	pivot = i; /* update pivot */
+	pivot = partiton(array, size, start, end);
 	recursive_quick_sort(array, size, start, pivot - 1);
 	recursive_quick_sort(array, size, pivot + 1, end);
 }
@@ -67,7 +82,7 @@ void recursive_quick_sort(int *array, int size, int start, int end)
  */
 void quick_sort(int *array, size_t size)
 {
-	if (array == NULL || size == 0)
+	if (array == NULL || size < 2)
 		return;
 	recursive_quick_sort(array, size, 0, size - 1);
 }
