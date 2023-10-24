@@ -48,3 +48,10 @@ The project is done in teams of 2.
 
 - A function that sorts a doubly linked list of integers in ascending order
   using the Cocktail sort algorithm.
+
+### Task 6
+`Algorithm`: [Counting Sort](./100-shell_sort.c)<br> 
+`Big O`: [102-O](./102-O)
+
+- A function that sorts an array of integers in ascending order using the
+  Counting sort algorithm.
