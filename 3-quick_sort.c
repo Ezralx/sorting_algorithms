@@ -20,6 +20,29 @@ void swap(int *a, int *b)
 }
 
 /**
+ * partition - sorts a portion of an array and divides it into partitions
+ * @array: pointer to an array of integers
+ * @start: start location of the next recursion
+ * @end: end location of the next recursion
+ *
+ * Return: the pivot index
+ */
+int partition(int *array, int start, int end)
+{
+	int i = start - 1, j, pivot = array[end];
+
+	for (j = start; j <= end; ++j)
+		if (array[j] < pivot)
+		{
+			++i;
+			swap(array + i, array + j);
+		}
+	++i;
+	swap(array + i, array + end); /* put pivot on solid position */
+	return (i);
+}
+
+/**
  * recursive_quick_sort - implement quick sort recursively by assigning
  *                        the last element as a pivot, as per the `Lomuto`
  *                        partition scheme.
@@ -32,19 +55,11 @@ void swap(int *a, int *b)
  */
 void recursive_quick_sort(int *array, size_t size, int start, int end)
 {
-	int i, j, pivot;
+	int pivot;
 
-	if (start >= end)
+	if (start >= end || start < 0)
 		return;
-	pivot = end;
-	for (i = j = start; j < end; ++j)
-		if (array[j] < array[pivot])
-		{
-			swap(array + i, array + j);
-			++i;
-		}
-	swap(array + i, array + pivot); /* put pivot on solid position */
-	pivot = i; /* update pivot */
+	pivot = partition(array, start, end);
 	print_array(array, size);
 	recursive_quick_sort(array, size, start, pivot - 1);
 	recursive_quick_sort(array, size, pivot + 1, end);
