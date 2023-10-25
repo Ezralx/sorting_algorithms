@@ -50,8 +50,18 @@ The project is done in teams of 2.
   using the Cocktail sort algorithm.
 
 ### Task 6
-`Algorithm`: [Counting Sort](./100-shell_sort.c)<br> 
+`Algorithm`: [Counting Sort](./102-counting_sort.c)<br> 
 `Big O`: [102-O](./102-O)
 
 - A function that sorts an array of integers in ascending order using the
   Counting sort algorithm.
+
+### Task 7
+`Algorithm`: [Merge Sort](./103-merge_sort.c)<br> 
+`Big O`: [103-O](./103-O)
+
+- A function that sorts an array of integers in ascending order using the
+  Merge sort algorithm.
+- The function sorts the left sub-array first and also makes sure that the left
+  sub-array is always less or equal than the right sub array.
+
